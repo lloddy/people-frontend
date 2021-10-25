@@ -6,7 +6,7 @@ import Show from "../pages/Show"
 const Main = (props) => {
     const [ people, setPeople ] = useState(null);
 
-    const URL = 'https://infinite-hollows-03570.herokuapp.com/';
+    const URL = 'https://infinite-hollows-03570.herokuapp.com/people';
 
     const getPeople = async () => {
         const response = await fetch(URL);
