@@ -1,6 +1,12 @@
+
+// variables
+
 $maincolor: black;
 $contrastcolor: white;
 
+$mainfont: 'Helvetica';
+
+// layout theme variables
 @mixin white-text-black-bg {
   color: $contrastcolor;
   background-color: $maincolor;
@@ -9,4 +15,37 @@ $contrastcolor: white;
 @mixin black-text-white-bg {
   color: $maincolor;
   background-color: $contrastcolor;
+}
+
+// Header
+
+.Header {
+  @include white-text-black-bg;
+  font-family: $mainfont;
+  display: flex;
+  justify-content: flex-start;
+  //in SASS you can 'nest' your styles or your style rules
+  a {
+    @include white-text-black-bg;
+
+    h1 {
+      margin: 10px;
+      font-size: large;
+    }
+  }
+}
+
+.image {
+  width: 600px;
+  border-radius: 10px;
+}
+
+.Form {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  min-height: 10rem;
+  max-width: 7rem;
+  margin: 5rem auto;
 }
