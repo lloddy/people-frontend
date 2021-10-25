@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './styles.scss';
+import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// HOC pattern = Higher Order Component or higher order function
+// HOF is a function that returns another function
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <React.StrictMode>
+      <Router>
+        <App />
+      </Router>
+    </React.StrictMode>,
   document.getElementById('root')
 );
 
