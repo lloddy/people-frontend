@@ -7,6 +7,7 @@ const Main = (props) => {
     const [ people, setPeople ] = useState([]);
 
     const URL = 'https://infinite-hollows-03570.herokuapp.com/people/';
+    // const URL = 'http://localhost:3001/people/';
 
     const getPeople = async () => {
         const response = await fetch(URL);
