@@ -49,3 +49,18 @@ $mainfont: 'Helvetica';
   max-width: 7rem;
   margin: 5rem auto;
 }
+
+button#delete {
+  @include white-text-black-bg;
+  display: block;
+  margin: auto;
+  font-size: 1.3em;
+  padding: 10px;
+}
+
+img {
+  width: 300px;
+  height: 300px;
+  border-radius: 90px;
+  object-fit: cover;
+}

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Link, Route, Switch, Redirect } from "react-router-dom";
 import Index from "../pages/Index"
 import Show from "../pages/Show"
 
 const Main = (props) => {
-    const [ people, setPeople ] = useState(null);
+    const [ people, setPeople ] = useState([]);
 
     const URL = 'https://infinite-hollows-03570.herokuapp.com/people/';
 
@@ -57,16 +57,25 @@ const Main = (props) => {
                 <Route
                 path="/people/:id"
                 render={(rp) => (
-                    <Show
-                        people={people} 
-                        updatePeople={updatePeople}
-                        deletePeople={deletePeople}
-                        {...rp}
-                    />
+                    people.length ? 
+                        <Show
+                            people={people} 
+                            updatePeople={updatePeople}
+                            deletePeople={deletePeople}
+                            {...rp}
+                        />
+                    :
+                    <Redirect to="/" /> // if you refresh on a show page, redirects to home
                     // render props or RP for short
                     //includes 3 objects, location, match and history
                 )}
                 />
+                <Route to="/404">
+                    <div>
+                        <h1>PAGE NOTE FOUND</h1>
+                        <Link to="/">Go back to homepage</Link>
+                    </div>
+                </Route>
             </Switch>
         </main>
     )
