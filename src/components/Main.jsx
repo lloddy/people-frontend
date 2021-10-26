@@ -26,6 +26,23 @@ const Main = (props) => {
         // update list of people
         getPeople();
     };
+
+    const updatePeople = async (person, id) => {
+        await fetch(URL + id, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "Application/json",
+            },
+            body: JSON.stringify(person),
+        })
+        getPeople(); 
+    };
+
+    const deletePeople = async id => {
+        await fetch(URL + id, { method: "DELETE" });
+        getPeople();
+    }
+
 //make sure to get people when app loads
 // in other words we need a side-effect to occur as a result of the page
 // loading. We will use teh useEffect fnctn run on page load
@@ -39,7 +56,13 @@ const Main = (props) => {
                 </Route>
                 <Route
                 path="/people/:id"
-                render={(rp) => (<Show {...rp} />
+                render={(rp) => (
+                    <Show
+                        people={people} 
+                        updatePeople={updatePeople}
+                        deletePeople={deletePeople}
+                        {...rp}
+                    />
                     // render props or RP for short
                     //includes 3 objects, location, match and history
                 )}
